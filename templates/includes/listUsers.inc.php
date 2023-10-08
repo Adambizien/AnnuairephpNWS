@@ -1,3 +1,7 @@
+<?php
+require './src/dbConnect.php';
+require './configs/global.php';
+?>
 <ul>
     <?php 
     require_once './src/crud.php';

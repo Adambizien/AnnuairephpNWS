@@ -7,14 +7,13 @@ function dd( ...$params)
         echo "</pre>";
     }
     return;
-
 }
 function ddd( ...$params)
 {
     echo "<pre>";
     var_dump($params);
     echo "</pre>";
-        die();
+    die();
 }
 
 function debugMode($active)
@@ -23,7 +22,6 @@ function debugMode($active)
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
- 
     }
     return;
 }
@@ -35,4 +33,12 @@ function fromInc($name){
         return false;
     }
 }
+function fromstruc($name){
+    if(file_exists("./templates/structure/". $name . ".struc.php")){
+        include "./templates/structure/". $name . ".struc.php";
+    }else{
+        return false;
+    }
+}
+
 

@@ -1,5 +1,5 @@
 <?php
-include_once './templates/includes/html_header.inc.php';
-fromInc("menu");
+fromstruc("html_header");
+fromstruc("menu");
 echo $pageContent['html'];
-include_once './templates/includes/html_footer.inc.php';
+fromstruc("html_footer");

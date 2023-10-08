@@ -5,6 +5,9 @@ ob_start();
 
 if(isset($_GET["page"])){
     fromInc($_GET['page']);
+}else{
+    header('Location: ./?page=accueil&layout=html');
+    exit;
 }
 
 $pageContent = [
@@ -16,5 +19,4 @@ if(isset($_GET["layout"])){
 
 }else{
     include "./templates/layouts/html.layout.php";
-
 }
