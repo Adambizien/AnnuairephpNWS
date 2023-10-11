@@ -47,5 +47,12 @@ function frompage($name){
         return false;
     }
 }
+function fromTool($name){
+    if(file_exists("./templates/tools/". $name .".tool.php")){
+        include "./templates/tools/" . $name .".tool.php"; 
+    }else{
+        return false;
+    }
+}
 
 
