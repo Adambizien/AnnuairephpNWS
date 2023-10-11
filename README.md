@@ -1,5 +1,5 @@
 # AnnuairephpNWS
-Projet php de la NWS
+journal de bord du premier projet php de la NWS 
 
 
 ### Branche principale (main) jour 1
