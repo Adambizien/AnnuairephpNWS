@@ -62,15 +62,15 @@
 
     //fonction update
     function update($connection,$id,$payload){
-        
         $first = false;
         $table ='';
+        $colmName = ["surname","name","birthday","email","phone","address","postalcode","city","description"];
         foreach($payload as $key => $value){
             if(!$first){
-                $table .= '`'.$key.'` = "'.htmlspecialchars($value).'"';
+                $table .= '`'.$colmName[$key].'` = "'.htmlspecialchars($value).'"';
                 $first = true;
             }else{
-                $table .= ",".'`'.$key.'` = "'.htmlspecialchars($value).'"';
+                $table .= ",".'`'.$colmName[$key].'` = "'.htmlspecialchars($value).'"';
             }
         }
 
@@ -78,7 +78,7 @@
         $statement->bindParam(1,$id);
         $statement ->execute();
     }
-    // update($connection,1,["surname"=>"test","name"=>"test","birthday"=>"2023-10-16","email"=>"test","phone"=>"test","address"=>"test","postalcode"=>"76101","city"=>"test","description"=>"test"]);
+    // update($connection,2,["surname"=>"test","name"=>"test","birthday"=>"2023-10-16","email"=>"test","phone"=>"test","address"=>"test","postalcode"=>"76101","city"=>"test","description"=>"test"]);
 
 
 // function queryBuilder($method, $table, ...$payload){
