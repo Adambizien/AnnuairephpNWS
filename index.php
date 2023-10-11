@@ -3,8 +3,10 @@
 require_once './configs/bootstrap.php';
 ob_start();
 
-if(isset($_GET["page"])){
-    fromInc($_GET['page']);
+if(isset($_GET["page"]) ){
+    if(frompage($_GET['page']) === false){
+        header('Location: ./?page=accueil&layout=html');
+    };
 }else{
     header('Location: ./?page=accueil&layout=html');
     exit;

@@ -40,5 +40,12 @@ function fromstruc($name){
         return false;
     }
 }
+function frompage($name){
+    if(file_exists("./templates/page/". $name .".page.php")){
+        include "./templates/page/" . $name .".page.php"; 
+    }else{
+        return false;
+    }
+}
 
 

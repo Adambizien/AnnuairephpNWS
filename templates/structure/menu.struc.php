@@ -1,22 +1,16 @@
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./?page=accueil&layout=html">Annuaire NWS</a>
-            <div class=" navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                <a class="nav-link <?php echo (isset( $_GET['page']) ? ($_GET['page'] == "accueil" ? "active" : "") : "active"); ?>" aria-current="page" href="./?page=accueil&layout=html">Accueil</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link <?php echo (isset( $_GET['page']) && $_GET['page'] == "formulaire") ? "active" : ""; ?>" href="./?page=formulaire&layout=html">Ajouter</a>
-                </li>
+<div class="container">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a href="./?page=accueil&layout=html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <image xlink:href="./image/NWS.png" width="40" height="32" />
+                </svg>
+                <span class="navbar-brand ">Annuaire NWS</span>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="./?page=accueil&layout=html" class="nav-link <?php echo (isset( $_GET['page']) ? ($_GET['page'] == "accueil" ? "active" : "") : "active"); ?>" aria-current="page">Accueil</a></li>
+                <li class="nav-item"><a href="./?page=ajouter&layout=html" class="nav-link <?php echo (isset( $_GET['page']) && $_GET['page'] == "ajouter") ? "active" : ""; ?>">Ajouter</a></li>
             </ul>
-            <!-- formulaire de recherche-->
-            <form class="d-flex" role="search">
-                <input class="form-control me-1" type="search" placeholder="Rechercher..." aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Rechercher</button>
-            </form>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
+  </div>

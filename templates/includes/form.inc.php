@@ -1,23 +1,15 @@
 <?php
 require './src/dbConnect.php';
 require './configs/global.php';
-?>
-<!--<form action="./index.php" method="post">-->
-<form action="#" method="post">
-  <ul>
-    <li>
-      <label for="name">Nom&nbsp;:</label>
-      <input type="text" id="name" name="name" />
-    </li>
-    <li>
-      <label for="surname">prenom&nbsp;:</label>
-      <input type="text" id="surname" name="surname" />
-    </li>
 
-  </ul>
-  <input type="submit" value="ajouter un pelo">
-</form>
-<?php
-if(isset($_POST['name'])&& isset($_POST['surname'])){
-    $connection->query(queryBuilder('c','contacts',['name'=>$_POST['name']],['surname'=>$_POST['surname']]));
+
+if(isset($_POST['submit'])){
+  if(!empty($_POST['surname']) && !empty($_POST['name']) && !empty($_POST['birthDay']) && !empty($_POST['email']) && !empty($_POST['phone'])){
+    $payload = [$_POST['surname'],$_POST['name'],$_POST['birthDay'],$_POST["email"],$_POST['phone'],$_POST['address'],$_POST['postalcode'],$_POST['city'],$_POST['description']];
+    create($connection, $payload);
+    header('Location: ./?page=accueil&layout=html');
+    exit;
+  }
 }
+
+?>
