@@ -9,7 +9,7 @@
             </a>
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="./?page=accueil&layout=html" class="nav-link <?php echo (isset( $_GET['page']) ? ($_GET['page'] == "accueil" ? "active" : "") : "active"); ?>" aria-current="page">Accueil</a></li>
-                <li class="nav-item"><a href="./?page=ajouter&layout=html" class="nav-link <?php echo (isset( $_GET['page']) && $_GET['page'] == "ajouter") ? "active" : ""; ?>">Ajouter</a></li>
+                <li class="nav-item"><a href="./?page=formajout&layout=html" class="nav-link <?php echo (isset( $_GET['page']) && $_GET['page'] == "ajouter") ? "active" : ""; ?>">Ajouter</a></li>
             </ul>
         </nav>
     </header>

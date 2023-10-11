@@ -17,8 +17,6 @@ require_once './src/crud.php';
         </thead>
         <tbody>
                 <?php
-                    
-                    // $data = $connection->query(queryBuilder('r', 'listUser'));
                     $data = getAll($connection);
                     $i = 0;
                     foreach ( $data as $key => $value) { 
@@ -28,7 +26,7 @@ require_once './src/crud.php';
                             <td><?= $value["surname"] .' '.$value["name"] ?></td>
                             <td><?= $value["email"] ?></td>
                             <td><?= $value["phone"] ?></td>
-                            <td><a href="./?page=detail&layout=html"><i class="bi bi-eye"></i></a>   <a href="./?page=modifier&layout=html"><i class="bi bi-pencil-square"></i></a>   <a href="./?page=supprimer&layout=html"><i class="bi bi-trash"></i></a></td>
+                            <td><a href="./?page=detail&layout=html"><i class="bi bi-eye"></i></a>   <a href="./?page=formmodifier&layout=html&id=<?= $value["id"] ?>" ><i class="bi bi-pencil-square"></i></a>   <a href="./?page=supprimer&layout=html"><i class="bi bi-trash"></i></a></td>
                         </tr>
                 <?php      
                     }
