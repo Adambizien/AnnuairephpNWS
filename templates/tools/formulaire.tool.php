@@ -6,6 +6,7 @@
     require './src/dbConnect.php';
     require './configs/global.php';
 
+    $formations = getAllFormation($connection);
     if(isset($_GET['id'])){
         $res = getByID($connection, $_GET['id']);
     }
@@ -65,6 +66,21 @@
                           <input type="text" id="city" class="form-control" name="city" placeholder="Ville..." value="<?php echo !empty($_POST['city']) ? $_POST['city'] :( isset($res[0]['city']) ? $res[0]['city']:'')?>">
                           <br/>
                       </div>
+                        <div class="col-6">
+                            <label for="formation" class="form-label">Formation<span class=" <?php echo (isset($_POST['submit'])? empty($_POST['formation']) ?  "text-danger" :  "":  ""); ?>">*</span> :</label>
+                            <select name="formation" id="formation" class="form-select <?php echo isset($_POST['submit']) && empty($_POST['formation']) ? 'is-invalid' : ''; ?>">
+                                <option disabled selected hidden>Sélectionnez la formation souhaitée</option>
+                                <?php
+                                    foreach ($formations as $formation) {
+                                        echo "<option value='{$formation['id_formation']}' " .
+                                        ( !empty($_POST['formation']) && $_POST['formation'] == $formation['id_formation'] ? 'selected' :
+                                          (isset($res[0]['formation_id']) && $res[0]['formation_id'] == $formation['id_formation'] ? 'selected' : '' )
+                                        ) . ">{$formation['nom_formation']}</option>";
+                                    }
+                                ?>
+                            </select>
+                            <br/>
+                        </div>
                       <div class="col-12">
                           <label for="description" class="form-label">Description :</label>
                           <textarea id="description" class="form-control" name="description" ><?php echo !empty($_POST['description']) ? $_POST['description'] :( isset($res[0]['description']) ? $res[0]['description'] : '')?>

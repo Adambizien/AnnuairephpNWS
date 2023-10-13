@@ -1,7 +1,22 @@
 <?php 
     require_once "./src/dbConnect.php";
 
-    //fonction getById
+    //fonction getall de foramtion
+    function getAllFormation($connection){
+        $statement = $connection->query("SELECT * FROM formation WHERE 1");
+        $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $data ;
+    }
+    //fonction getById de formation
+    function getByIdFormation ($connection,$id){
+        $statement = $connection->prepare("SELECT * FROM `formation` WHERE id_formation = ?");
+        $statement->bindParam(1,$id);
+        $statement->execute();
+        $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
+    //fonction getById de listUser
     function getByID ($connection,$id){
         $statement = $connection->prepare("SELECT * FROM `listUser` WHERE id = ?");
         $statement->bindParam(1,$id);
@@ -11,7 +26,7 @@
     }
     // dd(getByID($connection, 10));
 
-    //function getByName
+    //function getByName 
     function getByName ($connection,$name,$surname){
         $statement = $connection->prepare("SELECT * FROM listUser WHERE `name` = ? AND `surname` = ?");
         $statement->bindParam(1,$name);
@@ -36,13 +51,13 @@
             }
         }
         $table .= ')';
-         $statement = $connection->prepare("INSERT INTO `listUser` (`surname`,`name`,`birthday`,`email`,`phone`,`address`,`postalcode`,`city`,`description`) 
+         $statement = $connection->prepare("INSERT INTO `listUser` (`surname`,`name`,`birthday`,`email`,`phone`,`address`,`postalcode`,`city`,`description`,`formation_id`) 
         VALUES ".$table );
         $statement ->execute();
     }
     // create($connection,["exemple","exemple","2023-10-15","exemple","exemple","exempel","76100","exe","ee"]);
 
-    //fonction getAll
+    //fonction getAll de liste user
     function getAll($connection){
         $statement = $connection->query("SELECT * FROM listUser WHERE 1");
         $data = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -64,7 +79,7 @@
     function update($connection,$id,$payload){
         $first = false;
         $table ='';
-        $colmName = ["surname","name","birthday","email","phone","address","postalcode","city","description"];
+        $colmName = ["surname","name","birthday","email","phone","address","postalcode","city","description","formation"];
         foreach($payload as $key => $value){
             if(!$first){
                 $table .= '`'.$colmName[$key].'` = "'.htmlspecialchars($value).'"';

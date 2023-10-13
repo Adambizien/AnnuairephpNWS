@@ -7,6 +7,7 @@
 
     if(isset($_GET['id'])){
         $res = getByID($connection, $_GET['id']);
+        $formation = getByIdFormation($connection,$res[0]['formation_id']);
     }
 ?>
 <main class="flex-shrink-0">
@@ -96,6 +97,18 @@
                                         <input class="form-control" id="city" type="text"  value="<?php echo (isset($res[0]['city']) ? $res[0]['city']:'')?>">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <label class="small mb-1" for="email">Formation souhaitée :</label>
+                            
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="bi bi-backpack3"></i></div>
+                                        </div>
+                                        <select name="formation" id="formation" class="form-select ">
+                                            <option selected> <?php echo $formation[0]['nom_formation']; ?> </option>
+                                        </select>
+                                    </div>
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1" for="description">Description :</label>
