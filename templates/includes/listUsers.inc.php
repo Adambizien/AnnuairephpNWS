@@ -1,6 +1,5 @@
 <?php
 require './src/dbConnect.php';
-require './configs/global.php';
 require_once './src/crud.php';
 $formations = getAllFormation($connection);
 ?>

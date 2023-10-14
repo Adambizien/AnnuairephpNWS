@@ -3,7 +3,7 @@
 <br>
 <?php
     require './src/dbConnect.php';
-    require './configs/global.php';
+
 
     if(isset($_GET['id'])){
         $res = getByID($connection, $_GET['id']);

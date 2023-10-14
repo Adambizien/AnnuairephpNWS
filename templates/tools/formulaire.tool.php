@@ -1,10 +1,8 @@
-
 <br>
 <br>
 <br>
 <?php
     require './src/dbConnect.php';
-    require './configs/global.php';
 
     $formations = getAllFormation($connection);
     if(isset($_GET['id'])){

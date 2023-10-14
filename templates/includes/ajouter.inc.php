@@ -1,6 +1,5 @@
 <?php
 require './src/dbConnect.php';
-require './configs/global.php';
 
 if(isset($_POST['submit'])){
   if(!empty($_POST['surname']) && !empty($_POST['name']) && !empty($_POST['birthDay']) && !empty($_POST['email']) && !empty($_POST['phone'])){
