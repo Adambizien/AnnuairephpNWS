@@ -3,10 +3,12 @@
 <br>
 <?php
     require './src/dbConnect.php';
+    $database = new Database($connection);
 
-    $formations = getAllFormation($connection);
+    $formations = $database->getAllFormation();
+
     if(isset($_GET['id'])){
-        $res = getByID($connection, $_GET['id']);
+        $res = $database->getByID($_GET['id']);
     }
 ?>
 <main class="flex-shrink-0">

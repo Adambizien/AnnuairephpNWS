@@ -1,7 +1,8 @@
 <?php
 require './src/dbConnect.php';
-require_once './src/crud.php';
-$formations = getAllFormation($connection);
+
+$database = new Database($connection);
+$formations = $database->getAllFormation();
 ?>
 <div class="container ">
     <div class="row">
@@ -50,14 +51,14 @@ $formations = getAllFormation($connection);
             <tbody>
                     <?php
                         if(isset($_POST['submit'])){
-                            $data = searchFiltreTri($connection,(isset($_POST['filtre'])? $_POST['filtre'] : '' ),(isset($_POST['search'])? $_POST['search'] : ''),(isset($_POST['tri'])? $_POST['tri'] : ''));
+                            $data = $database->searchFiltreTri((isset($_POST['filtre'])? $_POST['filtre'] : '' ),(isset($_POST['search'])? $_POST['search'] : ''),(isset($_POST['tri'])? $_POST['tri'] : ''));
                         }else{
-                            $data = getAll($connection);
+                            $data = $database->getAll();
                         }
                          
                         $i = 0;
                         foreach ( $data as $key => $value) { 
-                           $formation = getByIdFormation($connection,$value["formation_id"]);
+                           $formation = $database->getByIdFormation($value["formation_id"]);
                     ?>
                             <tr>
                                 <td><?= $value["surname"] .' '.$value["name"] ?></td>
