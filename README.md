@@ -1,6 +1,8 @@
 # AnnuairephpNWS
 Journal de bord du premier projet php de la NWS 
 
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) SQL [ici](https://github.com/Adambizien/AnnuairephpNWS/blob/ad939fc56e2b860c70d762860ea1f5e5c1b4832a/sql.txt)
+
 
 ### Branche principale (main)  1 :
 - Nous avons créé une base de données "annuaireNWS", puis nous avons ajouté la table "listUser" avec les colonnes id, surname, name, birthday, email, phone, address, postalcode, city et description.
