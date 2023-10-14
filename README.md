@@ -21,3 +21,7 @@ Journal de bord du premier projet php de la NWS
 - Nous avons ajouté une table "formation" qui est liée à la colonne "formation_id" (que j'ai ajoutée) dans "listUser", et nous l'avons intégrée aux fonctionnalités précédemment mentionnées pour anticiper notre        futur filtre en fonction de la formation souhaitée. [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/19eedbb8759ae0d1f0d7947480cfc780579c45ea)
 ### Branche 'filtre_recherche_trie' 5 :
 - Nous avons mis en place les fonctionnalités de tri, recherche et de filtre. [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/ad939fc56e2b860c70d762860ea1f5e5c1b4832a)
+### Branche 'optimisation' 6 :
+- Nous avons oublié de mettre en place les formations dans le formulaire de modification, [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/ef15ed7c3f47001af4f36b6a90edd5df0dd4e56e) et [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/2746e7685819d440c07b5e979a5b1d47b1c62f06).
+- Nous avons mis en place un JSON pour la connexion à la base de données, [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/789a1d36cb6b4e87bbdaf4afaa00ea18e40e4ea6).
+- Nous avons remplacé le CRUD précédent par une classe Database, qui est beaucoup plus pratique, [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/55a4fdc6a479eba84b8c82b7a3c310f3f844a233).
