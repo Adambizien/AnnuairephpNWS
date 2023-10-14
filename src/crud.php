@@ -16,6 +16,40 @@
         return $data;
     }
 
+    //fonction de recherche, de tri et de filtre
+    function searchFiltreTri($connection,$filtre,$searchName,$tri){
+        $prepare = "SELECT * FROM `listUser` WHERE 1";
+        if($filtre != ''){
+            $prepare .= " AND formation_id = ".$filtre;
+        }
+        
+        if ($searchName != '') {
+            $names = explode(' ', $searchName);
+
+            $first_name = isset($names[0]) ? trim($names[0]) : '';
+            $last_name = isset($names[1]) ? trim($names[1]) : '';
+    
+            if ($first_name != '') {
+                $prepare .= " AND (name LIKE '%" . $first_name . "%' OR surname LIKE '%" . $first_name . "%')";
+            }
+            if ($last_name != '') {
+                $prepare .= " AND (name LIKE '%" . $last_name . "%' OR surname LIKE '%" . $last_name . "%')";
+            }
+        }
+        if($tri != ''){
+            if($tri == "asc"){
+                $ordre = 'ASC';
+            }else{
+                $ordre = 'DESC';
+            }
+            $prepare .= " ORDER BY surname ". $ordre;
+        }
+        $statement = $connection->prepare($prepare);
+        $statement->execute();
+        $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
     //fonction getById de listUser
     function getByID ($connection,$id){
         $statement = $connection->prepare("SELECT * FROM `listUser` WHERE id = ?");
@@ -59,7 +93,7 @@
 
     //fonction getAll de liste user
     function getAll($connection){
-        $statement = $connection->query("SELECT * FROM listUser WHERE 1");
+        $statement = $connection->query("SELECT * FROM listUser WHERE 1 ORDER BY surname ASC");
         $data = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $data ;
     }
@@ -95,121 +129,4 @@
     }
     // update($connection,2,["surname"=>"test","name"=>"test","birthday"=>"2023-10-16","email"=>"test","phone"=>"test","address"=>"test","postalcode"=>"76101","city"=>"test","description"=>"test"]);
 
-
-// function queryBuilder($method, $table, ...$payload){
-//     $query ="";
-//     switch ($method) {
-//         case 'c':
-//             $query .= "INSERT INTO ";
-//             break;
-//         case 'r':
-//             $query .= "SELECT * FROM ";
-//             break;
-//         case 'u':
-//             $query .= "UPDATE ";
-//             break;
-//         case 'd':
-//             $query .= "DELETE ";
-//             break;
-//         default:
-
-//             die("ERROR : Prepared query method not defined");
-//             break;
-//     }
-
-//     $query .= '`'.  htmlspecialchars($table) . '` ';
-//     if($method ==='u'){
-//         $query .= "SET ";
-
-
-//     }
-//     if($method ==="c"){
-//         $columnParse  = '(';
-//         $valueParse  = '(';
-//         foreach ($payload as $index => $column) {
-//             foreach ($column as $key => $value) {
-//                 if(is_string($value)){
-//                     $value = "\"" . $value. "\"";
-//                 }
-//                 $columnParse .= "`" . $key . "`"; 
-//                  if(!(count($payload) == ($index + 1 ))){
-//                 $columnParse .= ", ";
-//             }
-//             }
-
-//         }
-//         $columnParse.= ")";
-//              foreach ($payload as $index => $column) {
-//             foreach ($column as $key => $value) {
-//                 if(is_string($value)){
-//                     $value = "\"" . $value. "\"";
-//                 }
-//                 $valueParse .= $value ; 
-//                  if(!(count($payload) == ($index + 1 ))){
-//                 $valueParse .= ", ";
-//             }
-//             }
-
-//         }
-//         $valueParse.= ")";
-//         $query .= $columnParse . " VALUES " . $valueParse;
-//     }
-//     if($method ==='u'){
-//         foreach ($payload as $index => $filter) {
-//             foreach ($filter as $key => $value) {
-//                 if($key !== "id"){
-//                     if(is_string($value)){
-//                         $value = "\"" . $value. "\"";
-//                     }
-
-//                     $query .= "`" . $key . "` = ". $value .' ' ; 
-
-//                     if(!(count($payload) == ($index + 2 ))){
-//                         $query .= ", ";
-//                     }
-//                 }
-//             }
-
-//         }
-//     }
-//     if($method !=='c' && $method !== "u" && count($payload)){
-//         $query .= "WHERE ";
-//         foreach ($payload as $index => $filter) {
-//             foreach ($filter as $key => $value) {
-//                 if(is_string($value)){
-//                     $value = "\"" . $value. "\"";
-//                 }
-//                 $query .= "`" . $key . "` = ". $value . " AND "; 
-//             }
-//             if(count($payload) == ($index + 1 ) && $method !=='r'){
-//                 $query .= "1";
-//             } else if(count($payload) == ($index + 1 )) {
-//                 $query .= '`status` = "online"';
-//             }
-//         }
-//     } else if($method === "u"){
-//         $idFound = false;
-//         foreach ($payload as $index => $filter) {
-//             foreach ($filter as $key => $value) {
-//                 if($key === "id"){
-//                     $idFound = true;
-
-//                     $query .= "WHERE ";
-//                     $query .= "`" . $key . "` = ". $value;
-//                 } 
-//             }
-//         }
-//         if(!$idFound){
-//             die("ERROR : Not id to update");
-//         }
-//     }
-
-//    return $query;
-
-// } 
-// dd(queryBuilder("c", "voiture", ["modele" =>"Ferrari"], ["couleur" => "rouge" ], ["test" => "taste"]));
-// dd(queryBuilder("r", "contacts",  ["name" => "Delaistre" ]));
-// dd(queryBuilder("u", "voiture", ["modele" => "Ferrari" ], ["couleur" => "rouge" ], ["id" => 2]));
-// dd(queryBuilder("d", "voiture", ["modele" => "Ferrari" ], ["couleur" => "rouge" ]));
-
-   
+ 
