@@ -113,7 +113,7 @@
     function update($connection,$id,$payload){
         $first = false;
         $table ='';
-        $colmName = ["surname","name","birthday","email","phone","address","postalcode","city","description","formation"];
+        $colmName = ["surname","name","birthday","email","phone","address","postalcode","city","description","formation_id"];
         foreach($payload as $key => $value){
             if(!$first){
                 $table .= '`'.$colmName[$key].'` = "'.htmlspecialchars($value).'"';
