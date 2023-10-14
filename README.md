@@ -19,3 +19,5 @@ Journal de bord du premier projet php de la NWS
 - Ajouter la fonctionnalité de suppression. [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/3b4e7a1eb02c3b1d1e2f04d4da3570237fb5461b)
 ### Branche "filtre_formation" 4 :
 - Nous avons ajouté une table "formation" qui est liée à la colonne "formation_id" (que j'ai ajoutée) dans "listUser", et nous l'avons intégrée aux fonctionnalités précédemment mentionnées pour anticiper notre        futur filtre en fonction de la formation souhaitée. [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/19eedbb8759ae0d1f0d7947480cfc780579c45ea)
+### Branche 'filtre_recherche_trie' 5 :
+- Nous avons mis en place les fonctionnalités de tri, recherche et de filtre. [ici](https://github.com/Adambizien/AnnuairephpNWS/commit/ad939fc56e2b860c70d762860ea1f5e5c1b4832a)
